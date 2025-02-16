@@ -1,12 +1,10 @@
-import { Image, StyleSheet, View,Text, Button, TouchableOpacity } from 'react-native';
+import { Image, StyleSheet, View,Text, TouchableOpacity,ScrollView, TextInput } from 'react-native';
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { ScrollView, TextInput } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
 export default function LoginScreen() {
+  const navigation = useNavigation(); 
+
   return (
     <ScrollView>
     <View style={styles.container}>
@@ -17,7 +15,7 @@ export default function LoginScreen() {
     <TextInput  style={styles.loginName} 
                 placeholder="Name"
                 placeholderTextColor="#000000"/>
-    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("explore")}>
+    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("home-page")}>
       <Text style={styles.buttonText}>Enter</Text>
     </TouchableOpacity>
    </View>
@@ -84,14 +82,13 @@ blueRectangle: {
  loginName:{
   height:55,
   width:300,
-  background: '#FFFFFF',
+  backgroundColor: '#FFFFFF',
   borderRadius: 30,
   marginBottom: 14,
-  padding:5,
   paddingLeft:30,
   fontSize:16,
   shadowColor:'#000',
-  shadowOffset: {width:0, height: 4},
+  shadowOffset: {width:2, height: 4},
    shadowOpacity:0.25,
    shadowRadius:4,
    elevation: 5,
