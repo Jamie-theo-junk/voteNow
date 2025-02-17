@@ -1,7 +1,7 @@
-import { StyleSheet, Image, View, Dimensions,Text,ScrollView } from 'react-native';
+import { StyleSheet, Image, View, Dimensions,Text,ScrollView, TouchableOpacity } from 'react-native';
 
 import handShakeImage from "@/assets/images/hand-shake.png";
-import qrCodeImage from "@/assets/images/qr_code.png";
+import userCircle from "@/assets/images/user_circle.png";
 
 const{ width } = Dimensions.get("window")
 
@@ -10,14 +10,18 @@ export default function TabTwoScreen() {
   return (
   <ScrollView style={styles.container}>
       <ScrollView horizontal showsHorizontalScrollIndicator={false} >
-      <View style={styles.box}>
-      <Image source={qrCodeImage} style={styles.images}/>
+        <TouchableOpacity onPress={() => navigation.navigate("create-vote")}>
+      <View style={[styles.box, {backgroundColor:'#BE0B31'}]} >
+      <Image source={userCircle} style={styles.images}/>
       <Text style={styles.boxText}> Begin Democracy </Text>
       </View>
-        <View style={[styles.box, {marginRight:20}]}>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("join-vote")}>
+        <View style={[styles.box, {marginRight:20, backgroundColor:'#012969'}]} >
         <Image source={handShakeImage} style={styles.images} />
         <Text style={styles.boxText}> Join Vote </Text>
         </View>
+        </TouchableOpacity>
       </ScrollView>
     <Text style={styles.currentVotesTitle}> Current Votes</Text>
   </ScrollView>
@@ -46,6 +50,7 @@ const styles = StyleSheet.create({
     marginLeft:20
   },
   boxText:{
+    color: '#FFFFFF',
     fontSize: 20,
     marginLeft:20,
     maxWidth:150,
