@@ -12,6 +12,10 @@ export default function LoginScreen() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
 
+  const toSignIn = async() =>{
+    navigation.navigate("sign-in")
+  }
+
   const handleLogin = async() =>{
     try{
       await signInWithEmailAndPassword(auth, email, password);
@@ -45,7 +49,7 @@ export default function LoginScreen() {
 
     <Text>or</Text>
     <TextInput  style={[styles.loginName, error && styles.errorInput]} 
-                placeholder="Name"
+                placeholder="Email"
                 placeholderTextColor="#000000"
                 value={email}
                 onChangeText={setEmail}/>
@@ -59,6 +63,7 @@ export default function LoginScreen() {
     <TouchableOpacity style={styles.button} onPress={handleLogin}>
       <Text style={styles.buttonText}>Enter</Text>
     </TouchableOpacity>
+    <Text style={styles.signText} onPress={toSignIn}>Sign in</Text>
     <Toast/>
    </View>
    </ScrollView>
@@ -171,6 +176,13 @@ blueRectangle: {
  },
  errorInput: {
   color: "#BE0B31",
+ },
+ signText:{
+  alignSelf:'flex-end',
+  fontSize:20,
+  margin:20,
+  marginRight:40,
+  color:'#BE0B31'
  }
 
 });

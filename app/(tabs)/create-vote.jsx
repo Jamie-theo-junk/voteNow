@@ -1,12 +1,13 @@
 import{View,StyleSheet, ScrollView,Image,TextInput,Text} from 'react-native'
 import { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
-import { Colors } from '@/constants/Colors';
+import  {Database} from 'firebase/database';
 
 export default function CreateVote() {
 
     const [descriptionHeight, setDescriptionHeight] = useState(100);
 
+   console.log(Database)
     return(
         <View style={styles.container}>
         <ScrollView >
